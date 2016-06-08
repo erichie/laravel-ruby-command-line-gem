@@ -1,0 +1,81 @@
+#!/usr/bin/env ruby
+
+require 'optparse'
+require 'mw'
+
+mw = Mw::Middleware.new
+options = {}
+command = ARGV.first
+
+OptionParser.new do |parser|
+  parser.banner = "Commands: inspire\n start\n init \n Options:"
+  parser.on('--me NAME', 'Your name so we can inspire you!') do |name|
+    options[:name] = name
+  end
+
+  parser.on('--ngrok', 'Start ngrok') do ||
+    options[:ngrok] = true
+  end
+
+  parser.on('--mw', 'Start MW Server') do ||
+    options[:mw_server] = true
+  end
+
+  parser.on('--queue', 'Start MW Queue') do ||
+    options[:queue] = true
+  end
+
+  parser.on('--files', 'Open your MW Directory') do ||
+    options[:files] = true
+  end
+
+  parser.on('-v', '--vagrant', 'Run an option using Vagrant instead of local MW') do ||
+    options[:vagrant] = true
+  end
+
+  parser.on('-h', '--help', 'Show this help message') do ||
+    options[:help] = true
+    puts parser
+  end
+end.parse!
+
+case command
+when 'inspire'
+  if options[:name]
+    puts "#{options[:name]} is so freaking cool!"
+  else
+    puts 'Keep up the good work!'
+  end
+when 'start'
+  if options[:mw_server] == true
+    if options[:vagrant] == true
+      mw.vagrant_start
+    else
+      mw.start_mw_server
+    end
+  elsif options[:queue] == true
+    if options[:vagrant] == true
+      mw.vagrant_queue
+    else
+      mw.start_queue
+    end
+  elsif options[:ngrok] == true
+    mw.start_ngrok
+  elsif options[:files] == true
+    mw.open_directory
+  else
+    if options[:vagrant] == true
+      mw.start_all_vagrant
+    else
+      mw.start_all
+    end
+  end
+when 'init'
+  if options[:vagrant] == true
+    mw.vagrant_intialize
+  end
+else
+  if options[:help] != true
+    puts 'That command does not exist'
+  end
+end
