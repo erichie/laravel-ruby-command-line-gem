@@ -1,41 +1,46 @@
 # Mw
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/mw`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+This gem is installed as a command line application and is used to manage web applications built with the Laravel PHP Framework. It can be difficult to remember all the processes you need to have running and can be time consuming to navigate to every different directory and start those processes. This app allows you to start everything you need with one command. Currently this app only runs on Linux.
 
 ## Installation
 
-Add this line to your application's Gemfile:
+Clone the repository into an easy to access directory.
 
-```ruby
-gem 'mw'
-```
+Navigate into the new cloned repository
 
 And then execute:
 
-    $ bundle
+    $ sudo rake install
 
-Or install it yourself as:
+(Make sure you have both Ruby and Rake installed on your system.)
 
-    $ gem install mw
+Edit config.yml and put in the paths that correspond to where your Laravel code, ngrok, and Vagrant machine resides.
+
+(ngrok is used to make your Laravel server publicly accessible.)
 
 ## Usage
 
-TODO: Write usage instructions here
+After installation make sure you are still in the root of the app folder and execute:
 
-## Development
+    $ mw start
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake false` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+This will start your Laravel server, ngrok to publicly expose your app, a Queue listener, and open a new terminal where your code resides
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+If using Vagrant to run your Laravel server execute:
+
+    $ mw start --vagrant
+
+Execute:
+
+    $ mw -h
+
+To see all available commands and options
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/mw. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/erichie/mw-ruby-command-line-gem. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](contributor-covenant.org) code of conduct.
 
 
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
-
