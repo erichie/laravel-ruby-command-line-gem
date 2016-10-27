@@ -1,4 +1,4 @@
-# Mw
+# Laravel Command Line Gem
 
 This gem is installed as a command line application and is used to manage web applications built with the Laravel PHP Framework. It can be difficult to remember all the processes you need to have running and can be time consuming to navigate to every different directory and start those processes. This app allows you to start everything you need with one command. Currently this app only runs on Linux.
 
