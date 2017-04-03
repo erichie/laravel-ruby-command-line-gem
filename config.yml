@@ -1,3 +1,3 @@
-:mw_path: 'dev/middleware/mw'
-:ngrok_path: 'dev/middleware'
-:vagrant_path: 'dev/middleware/homestead'
+:mw_path: 'dev/mw/bridge'
+:ngrok_path: 'dev/mw'
+:docker_path: 'dev/mw/bridge/laradock'

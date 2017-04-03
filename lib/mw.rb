@@ -14,23 +14,16 @@ module Mw
       open_directory
     end
 
-    def start_all_vagrant
-      vagrant_start
-      start_ngrok
-      open_directory
-      vagrant_queue
-    end
-
     def start_mw_server
       Dir.chdir("#{Dir.home}")
-      Dir.chdir("#{@@config[:mw_path]}")
-      system 'gnome-terminal -e "php artisan serve"'
+      Dir.chdir("#{@@config[:docker_path]}")
+      system 'gnome-terminal -e "docker-compose up -d"'
     end
 
     def start_queue
       Dir.chdir("#{Dir.home}")
-      Dir.chdir("#{@@config[:mw_path]}")
-      system 'gnome-terminal -e "php artisan queue:listen --tries=1"'
+      Dir.chdir("#{@@config[:docker_path]}")
+      system 'docker-compose exec workspace bash -c "php artisan queue:listen"'
     end
 
     def start_ngrok

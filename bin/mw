@@ -29,10 +29,6 @@ OptionParser.new do |parser|
     options[:files] = true
   end
 
-  parser.on('-v', '--vagrant', 'Run an option using Vagrant instead of local MW') do ||
-    options[:vagrant] = true
-  end
-
   parser.on('-h', '--help', 'Show this help message') do ||
     options[:help] = true
     puts parser
@@ -48,27 +44,15 @@ when 'inspire'
   end
 when 'start'
   if options[:mw_server] == true
-    if options[:vagrant] == true
-      mw.vagrant_start
-    else
-      mw.start_mw_server
-    end
+    mw.start_mw_server
   elsif options[:queue] == true
-    if options[:vagrant] == true
-      mw.vagrant_queue
-    else
-      mw.start_queue
-    end
+    mw.start_queue
   elsif options[:ngrok] == true
     mw.start_ngrok
   elsif options[:files] == true
     mw.open_directory
   else
-    if options[:vagrant] == true
-      mw.start_all_vagrant
-    else
-      mw.start_all
-    end
+    mw.start_all
   end
 when 'init'
   if options[:vagrant] == true

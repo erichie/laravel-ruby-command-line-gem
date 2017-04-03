@@ -14,7 +14,7 @@ And then execute:
 
 (Make sure you have both Ruby and Rake installed on your system.)
 
-Edit config.yml and put in the paths that correspond to where your Laravel code, ngrok, and Vagrant machine resides.
+Edit config.yml and put in the paths that correspond to where your Laravel code, ngrok, and docker-compose.yml file resides.
 
 (ngrok is used to make your Laravel server publicly accessible.)
 
@@ -25,10 +25,6 @@ After installation make sure you are still in the root of the app folder and exe
     $ mw start
 
 This will start your Laravel server, ngrok to publicly expose your app, a Queue listener, and open a new terminal where your code resides
-
-If using Vagrant to run your Laravel server execute:
-
-    $ mw start --vagrant
 
 Execute:
 
